@@ -1,0 +1,42 @@
+1). 'sam' is taking the 'communication' class?
+  select classes.name
+    from classes_students
+    inner join classes
+      on classes.id = classes_students.classes_id
+    inner join students
+      on classes_students.student_id = students.id
+    where students.name = 'sam';
+
+result: sam
+
+answer: True
+
+2). The students in the 'compromise' class are 'naomi', 'chris', and 'kim'?
+
+  select *
+    from classes_students cs
+    inner join students
+      on students.id = cs.student_id
+    inner join classes
+      on cs.classes_id = classes.id
+    where classes.name = 'compromise';
+
+result: naomi, chris, kim
+
+answer: True
+
+3). The names of the students taking any class in the 'cs' department are 'lauren', 'dan', 'naomi', 'kim' and 'chris'?
+
+  select *
+    from classes_students cs
+    inner join students
+      on students.id = cs.student_id
+    inner join classes
+      on cs.classes_id = classes.id
+    inner join departments
+      on classes.department = departments.id
+      where departments.name = 'cs';
+
+result: lauren, dan, naomi, kim, chris
+
+answer: True
